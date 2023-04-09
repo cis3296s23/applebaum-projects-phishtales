@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "PhishTales",
+  "description": "An extension that keeps you safe from phishing websites",
+  "version": "1.0",
+  "action": {
+    "default_icon": "PhishTales.png"
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "declarativeNetRequestWithHostAccess",
+    "tabs",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "128":  "PhishTales.png"  
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
+
+}
