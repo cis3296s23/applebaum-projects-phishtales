@@ -1,79 +1,36 @@
-var newId = 1;
+const whitelistMap = new Map()
 
-chrome.declarativeNetRequest.getDynamicRules((callback) => { 
-    console.log(callback.length);
-    newId = callback.length + 1;
-});
-
-
-/*
-chrome.webNavigation.onBeforeNavigate.addListener((callback) => {
-    console.log(callback.url);
+chrome.webNavigation.onCommitted.addListener((callback) => {
+  if (callback.transitionType && callback.transitionType != 'auto_toplevel' && callback.transitionType != 'auto_subframe' ) {
+    console.log(`${callback.url} ${callback.frameId} ${callback.tabId} ${callback.parentFrameId} ${callback.transitionType}`);
+  
+    
     //send call to model to see if phishing
-    var phishing = true;
+    var phishing = callback.url == "https://www.google.com/";
 
-    if (phishing) {
+    if (phishing && (whitelistMap.get(callback.url) ?? 1) == 1) {
+
+
         chrome.action.setIcon({path: "/warning.png"});
-        chrome.declarativeNetRequest.updateDynamicRules(
-            {
-              addRules: [
-                {
-                  action: {
-                    type: "block",
-                  },
-                  condition: {
-                    urlFilter: callback.url, // block URLs that starts with this
-                    
-                  },
-                  id: newId,
-                  priority: 1,
-                },
-              ],
-            },
-            () => {
-              newId += 1;
-              console.log("block rule added");
-            }
-          );
+        chrome.tabs.update(callback.tabId, {url: (chrome.runtime.getURL("blocked.html") + "?url=" + callback.url)});
     } else {
         chrome.action.setIcon({path: "/PhishTales.png"});
     }
 
+  }
+});
 
-  });*/
 
-  chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    console.log("changed");
-    console.log(changeInfo.url);
-    if (changeInfo.url) {
-        
-        var phishing = true;
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
 
-        if (phishing) {
-            chrome.action.setIcon({path: "/warning.png"});
-            chrome.declarativeNetRequest.updateDynamicRules(
-                {
-                addRules: [
-                    {
-                    action: {
-                        type: "block",
-                    },
-                    condition: {
-                        urlFilter: changeInfo.url, // block URLs that starts with this
-                        
-                    },
-                    id: newId,
-                    priority: 1,
-                    },
-                ],
-                },
-                () => {
-                newId += 1;
-                console.log("block rule added");
-                }
-            );
-        } else {
-            chrome.action.setIcon({path: "/PhishTales.png"});
-        }
+  
+    if (sender.tab && sender.tab.url.startsWith(chrome.runtime.getURL("blocked.html")) && request.action == "whitelist") {
+      console.log(sender.tab ?
+        "from a content script:" + sender.tab.url :
+        "from the extension");
+      whitelistMap.set(request.url, 0)
     }
-  });
+  }
+);
+

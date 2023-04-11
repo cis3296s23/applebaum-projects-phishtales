@@ -7,7 +7,7 @@
     "default_icon": "PhishTales.png"
   },
   "permissions": [
-    "declarativeNetRequest",
+    "webNavigation",
     "declarativeNetRequestFeedback",
     "declarativeNetRequestWithHostAccess",
     "tabs",
