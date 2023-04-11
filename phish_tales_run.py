@@ -1,7 +1,6 @@
 import pickle
 from sklearn.tree import DecisionTreeClassifier
 import numpy as np
-import streamlit as st
 import tldextract
 import ipaddress
 import re
