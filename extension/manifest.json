@@ -8,8 +8,6 @@
   },
   "permissions": [
     "webNavigation",
-    "declarativeNetRequestFeedback",
-    "declarativeNetRequestWithHostAccess",
     "tabs",
     "activeTab"
   ],
