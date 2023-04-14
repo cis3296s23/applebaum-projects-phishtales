@@ -1,48 +1,119 @@
-	h1 {
-		color: #333;
-		font-size: 32px;
-		font-weight: bold;
-		margin: 50px 0 20px;
-		text-align: center;
-	}
+body {
+background-color: rgb(203, 226, 224);
+}
 
-	form {
-		background-color: #fff;
-		border: 1px solid #e6e6e6;
-		border-radius: 5px;
-		box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-		margin: 0 auto;
-		max-width: 400px;
-		padding: 40px;
-		text-align: center;
-	}
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-	label {
-		display: block;
-		font-size: 18px;
-		font-weight: bold;
-		margin-bottom: 10px;
-		text-align: left;
-	}
+p {
+    font-size: 18px;
+    text-align: center;
+}
 
-	input {
-		border: 1px solid #e6e6e6;
-		border-radius: 5px;
-		font-size: 16px;
-		padding: 10px;
-		width: 100%;
-	}
+.svg--icon {
+    width: 50%;
+    max-width: 5rem;
+    height: 100%;
+    max-height: 5rem;
+    display: inline-block;
+    margin: 0 auto;
+    fill: currentColor;
+}
+.connect {
+    width: 5rem;
+    height: 5rem;
+    float: left;
+    margin: 0.5rem 1rem 0.5rem 0;
+    color: #353c4a;
+    border: 0.125rem solid rgb(0 0 0);
+    box-shadow: 10px 10px rgb(0 0 0 / 15%);
+    border-radius: 50%;
+    transition: 250ms;
+}
 
-	button {
-		background-color: #333;
-		border: none;
-		border-radius: 5px;
-		color: #fff;
-		cursor: pointer;
-		font-size: 18px;
-		font-weight: bold;
-		margin-top: 20px;
-		padding: 10px 20px;
-		transition: background-color 0.3s ease-in-out;
-		width: 100%;
-	}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+input {
+  
+	font-family: inherit;
+	line-height:inherit;
+	color:#2e3750;
+	min-width:12em;
+	position:relative;
+	font-size: 1.5em;
+	padding: 3px;
+	display: inline-block;
+
+
+	border: 0.125rem solid rgb(45, 4, 127);
+    box-shadow: 10px 10px rgba(30, 8, 232, 0.15);
+  
+    transition: 250ms;
+}
+
+
+
+button {
+  --text-base: 277deg, 55%, 40%;
+  --text-hover: 307deg, 72%, 86%;
+  --shadow-start: 52deg, 100%, 72%;
+  --shadow-end: 282deg, 90%, 50%;
+  --shadow-inner: 277deg, 90%, 62%;
+  all: unset;
+  color: hsla(var(--text-base), 1);
+  font: 700 1.125rem/1.2 Raleway, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.85em;
+  max-width: 100%;
+  width: 10em;
+  background: inherit;
+  background-clip: padding-box;
+  border: 5px solid hsla(var(--text-base), 1);
+  border-radius: 2em;
+  cursor: pointer;
+  position: relative;
+  transition: 0.25s ease-out;
+  margin-top: 3%;
+}
+button::before, button::after {
+  content: "";
+  border-radius: inherit;
+  transition: inherit;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+button::before {
+  inset: -0.2em;
+  z-index: -1;
+  background: linear-gradient(hsla(var(--shadow-start), 1), hsla(var(--shadow-end), 1));
+  filter: blur(1.2em) saturate(1.2);
+  transform-origin: bottom;
+  transform: scaleY(0.5);
+  opacity: 0;
+}
+button::after {
+  box-shadow: inset 0 0 0 1px #fff, 0 0 0 4px rgba(255, 255, 255, 0.7), 1px 1px 0 4px #fff;
+  mix-blend-mode: overlay;
+  opacity: 0;
+}
+button:hover, button:focus {
+  color: hsla(var(--text-hover), 1);
+  border-color: transparent;
+  box-shadow: inset 0 1.4em 0 hsla(var(--shadow-inner), 0.1), inset 0 0 1.4em hsla(var(--shadow-inner), 0.32), 0 1px 1px hsla(var(--shadow-inner), 0.32);
+}
+button:hover::before, button:hover::after, button:focus::before, button:focus::after {
+  transform: none;
+  opacity: 1;
+}
+
