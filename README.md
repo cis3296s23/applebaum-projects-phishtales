@@ -24,11 +24,11 @@ This document proposes a novel application of a text message (SMS or Email) read
 ### Front End, locally hosted
 For this, you just need to run the following to get all libraries needed:
 
-pip -r requirements.txt
+`pip -r requirements.txt`
 
 After that, in a command line, run the following:
 
-python -m flask --app app run
+`python -m flask --app app run`
 
 The output should provide you with the IP to navigate to for the website.
 
