@@ -1,7 +1,7 @@
 <div align="center">
 
 # PhishTales
-[![Report Issue on Jira](https://img.shields.io/badge/Report%20Issues-Jira-0052CC?style=flat&logo=jira-software)](https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/DT/issues)
+[![Report Issue on Jira](https://img.shields.io/badge/Report%20Issues-Jira-0052CC?style=flat&logo=jira-software)]([https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/DT/issues](https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/PHT/issues))
 [![Deploy Docs](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml)
 [![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://applebaumian.github.io/tu-cis-4398-docs-template/)
 
@@ -11,11 +11,14 @@
 
 ## Keywords
 
-Section #, as well as any words that quickly give your peers insights into the application like programming language, development platform, type of application, etc.
+Section 704, Phishing, Machine Learning
 
 ## Project Abstract
 
-This document proposes a novel application of a text message (SMS or Email) read-out and hands-free call interacted between an Android Smartphone and an infotainment platform (headunit) in a car environment. When a phone receives an SMS or Email, the text message is transferred from the phone to the headunit through a Bluetooth connection. On the headunit, user can control which and when the received SMS or E-mail to be read out through the in-vehicle audio system. The user may press one button on the headunit to activate the hands-free feature to call back the SMS sender.
+This project is designed to be a program and/or integrated web extension that inputs a URL and outputs a probability that the inputted URL is a phishing scam. From a user point of view, all that occurs is a simple URL input, or in the case of a browser extension, a click of a button. The output is the reliability score of the website in question. The project uses machine learning to predict if a website is a phishing scam or not.
+
+![image](https://user-images.githubusercontent.com/70736675/232888073-d0f4e223-d67c-4968-a0f3-a35a0066a622.png)
+
 
 ## Installation Instructions
 
@@ -43,15 +46,15 @@ Describe the requirements – i.e., what the product does and how it does it fro
 
 ## Conceptual Design
 
-Describe the initial design concept: Hardware/software architecture, programming language, operating system, etc.
+This project will mainly use python, as it has many packages and libraries used for data science and machine learning. Models such as K—nearest neighbor, decision trees, naïve bayes, and support vector machines will be used for classification. XGBoost, polyfit, and linregress will be used for regression, with regplot from seaborn will be used to visualize data. These models can be obtained from NumPy, SciPy, pandas, matplotlib, and scikit-learn packages freely available using pip. Python3 will be used for the actual data preprocessing, model training, model testing, an model evaluation. To implement a web extension, HTML, JavaScript, and CSS will be used. This will create a simple interface that detects the current web URL, passes it through the ML model, and outputs a classification and regression value indicating the reliability of the website in question. HTML and CSS will be used to build and style the extension, while JavaScript will simply deal with user-interaction.
 
 ## Background
 
-The background will contain a more detailed description of the product and a comparison to existing similar projects/products. A literature search should be conducted and the results listed. Proper citation of sources is required. If there are similar open-source products, you should state whether existing source will be used and to what extent. If there are similar closed-source/proprietary products, you should state how the proposed product will be similar and different.
+This tool will check URLs for domain squatting-- which is when a common website is registered under a different domain (ex: registering apple.io vs apple.com), URL hijacking-- which takes common website domain typos and registers them to make a website appear to be legitimate (ex: goggle.com vs google.com), also checking other details in the URL such as its length, the number of subdomains in the URL, and the Top-Level Domain (TLD). The project will also check the domain name and its IP address to see if it is blacklisted in any commonly known phishing databases (ex: https:openphish.com/phishing_database.html). Page-based features will be checked to determine how reliable the website seems, websites (ex: PageRank and AWS) can be used for reference data. Finally, content-based features can parse through the code used to develop the website and detect the reliability of said website. All these features combined will use a decision-tree ML algorithm to create a score that assesses the likelihood that a given URL is a phishing scam or not. While other projects exist that use similar ideologies, this project will employ updated models and will use newly updated data to train these models. With all of the different features used to create a predicted output, this project has potential to be more accurate than similar projects.
 
 ## Required Resources
 
-Discuss what you need to develop this project. This includes background information you will need to acquire, hardware resources, and software resources. If these are not part of the standard Computer Science Department lab resources, these must be identified early and discussed with the instructor.
+Resources required for this project can be obtained with a simple internet connection and the ability to access open-source python libraries. Hardware requirements are quite simple as the model will be built on a well-equipped machine and further testing will not require much computing power. Software requirements are the ability to run python files, chrome browser, and either MacOS, Windows, or Linux.
 
 ## Collaborators
 
