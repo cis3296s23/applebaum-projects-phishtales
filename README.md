@@ -1,6 +1,6 @@
 <div align="center">
 
-# Project Name
+# PhishTales
 [![Report Issue on Jira](https://img.shields.io/badge/Report%20Issues-Jira-0052CC?style=flat&logo=jira-software)](https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/DT/issues)
 [![Deploy Docs](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml)
 [![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://applebaumian.github.io/tu-cis-4398-docs-template/)
@@ -16,6 +16,26 @@ Section #, as well as any words that quickly give your peers insights into the a
 ## Project Abstract
 
 This document proposes a novel application of a text message (SMS or Email) read-out and hands-free call interacted between an Android Smartphone and an infotainment platform (headunit) in a car environment. When a phone receives an SMS or Email, the text message is transferred from the phone to the headunit through a Bluetooth connection. On the headunit, user can control which and when the received SMS or E-mail to be read out through the in-vehicle audio system. The user may press one button on the headunit to activate the hands-free feature to call back the SMS sender.
+
+## Installation Instructions
+
+### ML Model
+
+### Front End, locally hosted
+For this, you just need to run the following to get all libraries needed:
+
+pip -r requirements.txt
+
+After that, in a command line, run the following:
+
+python -m flask --app app run
+
+The output should provide you with the IP to navigate to for the website.
+
+
+### Chrome Extension
+
+The extension can be accessed inside the extension folder. To load the unpacked extension, you can navigate to Settings>Extensions>Load unpacked and then select the extension folder.
 
 ## High Level Requirement
 
