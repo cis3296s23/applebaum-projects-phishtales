@@ -6,6 +6,31 @@
 		text-align: center;
 	}
 
+	h2 {
+		color: #333;
+		font-size: 24px;
+		font-weight: bold;
+		margin: 0px 0 0px;
+		text-align: center;
+	}
+
+	p {
+		color: #5a5a5a;
+		font-size: 16px;
+		font-weight: bold;
+		margin: 0px 0 0px;
+		padding: 5px 0 13px 10px;
+	}
+
+	.icon {
+		width:25px;
+		height: 25px;
+		text-align: right;
+		padding:0;
+		background-color: rgb(255, 255, 255, 0);
+		margin: 0px 0 0px;
+	}
+
 	form {
 		background-color: #fff;
 		border: 1px solid #e6e6e6;
@@ -25,6 +50,19 @@
 		text-align: left;
 	}
 
+	.dimScreen
+	{
+		padding:0;
+		margin: 0px 0 0px;
+
+		top:0;
+		left:0;
+
+		width: auto;
+		height: auto;
+		background-color:rgb(255, 255, 255);
+	}
+
 	input {
 		border: 1px solid #e6e6e6;
 		border-radius: 5px;
@@ -33,7 +71,7 @@
 		width: 100%;
 	}
 
-	button {
+button {
 		text-align: center;
 		background-color: #333;
 		border: none;
@@ -46,6 +84,21 @@
 		padding: 10px 20px;
 		transition: background-color 0.3s ease-in-out;
 		width: 30%;
+	}
+
+	.button2 {
+		text-align: center;
+		background-color: #333;
+		border: none;
+		border-radius: 5px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+		font-weight: bold;
+		margin-top: 15px;
+		padding: 10px 20px;
+		transition: background-color 0.3s ease-in-out;
+		width: 90%;
 	}
 
 	.center {
