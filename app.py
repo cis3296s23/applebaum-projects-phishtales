@@ -157,8 +157,7 @@ def index():
         else:
             result = 'invalid'
 
-        if returnString:
-            return result
+
 
 
     return render_template('index.html', result=result)  # return the result in html file
