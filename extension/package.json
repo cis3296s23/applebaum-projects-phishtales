@@ -1,0 +1,22 @@
+{
+  "devDependencies": {
+    "@babel/preset-env": "^7.21.4",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0",
+    "jest-chrome": "^0.8.0",
+    "sinon-chrome": "^3.0.1"
+  },
+  "dependencies": {
+    "@types/chrome": "^0.0.232"
+  },
+  "name": "extension",
+  "version": "1.0.0",
+  "main": "background.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

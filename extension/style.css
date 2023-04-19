@@ -1,0 +1,110 @@
+	h1 {
+		color: #333;
+		font-size: 32px;
+		font-weight: bold;
+		margin: 50px 0 20px;
+		text-align: center;
+	}
+
+	h2 {
+		color: #333;
+		font-size: 24px;
+		font-weight: bold;
+		margin: 0px 0 0px;
+		text-align: center;
+	}
+
+	p {
+		color: #5a5a5a;
+		font-size: 16px;
+		font-weight: bold;
+		margin: 0px 0 0px;
+		padding: 5px 0 13px 10px;
+	}
+
+	.icon {
+		width:25px;
+		height: 25px;
+		text-align: right;
+		padding:0;
+		background-color: rgb(255, 255, 255, 0);
+		margin: 0px 0 0px;
+	}
+
+	form {
+		background-color: #fff;
+		border: 1px solid #e6e6e6;
+		border-radius: 5px;
+		box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+		margin: 0 auto;
+		max-width: 400px;
+		padding: 40px;
+		text-align: center;
+	}
+
+	label {
+		display: block;
+		font-size: 18px;
+		font-weight: bold;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.dimScreen
+	{
+		padding:0;
+		margin: 0px 0 0px;
+
+		top:0;
+		left:0;
+
+		width: auto;
+		height: auto;
+		background-color:rgb(255, 255, 255);
+	}
+
+	input {
+		border: 1px solid #e6e6e6;
+		border-radius: 5px;
+		font-size: 16px;
+		padding: 10px;
+		width: 100%;
+	}
+
+button {
+		text-align: center;
+		background-color: #333;
+		border: none;
+		border-radius: 5px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+		font-weight: bold;
+		margin-top: 20px;
+		padding: 10px 20px;
+		transition: background-color 0.3s ease-in-out;
+		width: 30%;
+	}
+
+	.button2 {
+		text-align: center;
+		background-color: #333;
+		border: none;
+		border-radius: 5px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+		font-weight: bold;
+		margin-top: 15px;
+		padding: 10px 20px;
+		transition: background-color 0.3s ease-in-out;
+		width: 90%;
+	}
+
+	.center {
+		margin: auto;
+		width: 30%;
+		padding: 10px;
+		display: flex;
+  		justify-content: space-evenly;
+	  }
