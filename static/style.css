@@ -117,3 +117,26 @@ button:hover::before, button:hover::after, button:focus::before, button:focus::a
   opacity: 1;
 }
 
+
+
+.about-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 50%;
+  margin-top: 20px;
+}
+
+.about-project h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+
+
+.github-logo {
+  width: 32px;
+  height: 32px;
+  background-color: aquamarine;
+}
