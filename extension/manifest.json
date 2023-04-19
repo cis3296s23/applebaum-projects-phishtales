@@ -4,15 +4,18 @@
   "description": "An extension that keeps you safe from phishing websites",
   "version": "1.0",
   "action": {
-    "default_icon": "PhishTales.png"
+    "default_icon": "PhishTales.png",
+    "default_popup": "popup.html"
   },
   "permissions": [
     "webNavigation",
     "tabs",
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "icons": {
     "128":  "PhishTales.png"  
