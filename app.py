@@ -131,13 +131,19 @@ def index():
     result = None
     if request.method == 'POST':   # when user submit the url
         url = request.form['url']    # store the url in url variable
+        returnString = request.form['returnString']
         if url:  # if url is not empty
             if not url.startswith("https://") and not url.startswith("http://"):    # if url is valid and not empty
               url = 'https://' + url
             is_safe = check_phishing(url)    # check if it is safe or phising
-            result = 'safe' if is_safe else 'phishing'   
+            result = 'safe' if is_safe else 'phishing'
         else:
             result = 'invalid'
+
+        if returnString:
+            return result
+
+
     return render_template('index.html', result=result)  # return the result in html file
 
 if __name__ == '__main__':

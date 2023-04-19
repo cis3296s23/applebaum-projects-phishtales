@@ -23,17 +23,34 @@ chrome.runtime.onStartup.addListener(
 
 
 
-chrome.webNavigation.onCommitted.addListener((callback) => {
+chrome.webNavigation.onCommitted.addListener(async (callback) => {
   if (callback.transitionType && callback.transitionType != 'auto_toplevel' && callback.transitionType != 'auto_subframe' ) {
     console.log(`${callback.url} ${callback.frameId} ${callback.tabId} ${callback.parentFrameId} ${callback.transitionType}`);
   
-    
+    var phishing;
     //send call to model to see if phishing
-    var phishing = callback.url == "https://www.google.com/";
+    await fetch("https://www.phishtales.net/", {
+      method: "POST",
+      body: JSON.stringify({
+        form: {
+          url: callback.url,
+          returnString: true
+        }
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+  .then((response) => response.json())
+  .then((json) => phishing = json);
+
+
+    let data = await response.json();
+    //var phishing = callback.url == "https://www.google.com/";
     var isWhitelisted = ignoreListContains(callback.url);
     console.log(`whitelsited : ${isWhitelisted}`);
 
-    if (phishing && !isWhitelisted) {
+    if (phishing == 'phishing' && !isWhitelisted) {
         chrome.action.setIcon({path: "/warning.png"});
         chrome.tabs.update(callback.tabId, {url: (chrome.runtime.getURL("blocked.html") + "?url=" + callback.url)});
         
