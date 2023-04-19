@@ -29,7 +29,7 @@ chrome.webNavigation.onCommitted.addListener(async (callback) => {
   
     var phishing;
     //send call to model to see if phishing
-    await fetch("https://www.phishtales.net/", {
+    await fetch("https://www.phishtales.net/extension", {
       method: "POST",
       body: JSON.stringify({
         form: {
@@ -45,7 +45,7 @@ chrome.webNavigation.onCommitted.addListener(async (callback) => {
   .then((json) => phishing = json);
 
 
-    let data = await response.json();
+    console.log(phishing);
     //var phishing = callback.url == "https://www.google.com/";
     var isWhitelisted = ignoreListContains(callback.url);
     console.log(`whitelsited : ${isWhitelisted}`);
