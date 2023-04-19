@@ -124,7 +124,7 @@ def check_phishing(url):
     tree = load_model()
     features = np.array(feature_extraction(url))
     y_pred = tree.predict(features.reshape(1, -1))[0]
-    return y_pred == 1
+    return y_pred == 0
 
 @app.route('/', methods=['GET', 'POST'])  # method accept GET AND POST requests
 def index():
