@@ -1,5 +1,5 @@
 
-var domainWhitelist = new Map();
+export var domainWhitelist = new Map();
 
 export function getDomain(websiteURL) {
     let domain = (new URL(websiteURL));
@@ -7,12 +7,12 @@ export function getDomain(websiteURL) {
   }
 
   export  function updateIgnoreList(website, add) {
-    domain = getDomain(website);
+    let domain = getDomain(website);
   
     if (add == true) {
-      domainWhitelist.delete(domain)
-    } else {
       domainWhitelist.set(domain, 0)
+    } else {
+      domainWhitelist.delete(domain)
     }
     chrome.storage.local.set(
       { "ignoreList": Object.fromEntries(domainWhitelist) }
