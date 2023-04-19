@@ -1,4 +1,5 @@
 var whitelistMap = new Map();
+var whitelistTabs = {};
 
 // const { getDomain, updateIgnoreList, loadWhitelist, getIgnore } = require('./domainUtil')
 import {getDomain, updateIgnoreList, loadWhitelist, getIgnore} from './domainUtil.js'
@@ -26,23 +27,26 @@ chrome.runtime.onStartup.addListener(
 chrome.webNavigation.onCommitted.addListener(async (callback) => {
   if (callback.transitionType && callback.transitionType != 'auto_toplevel' && callback.transitionType != 'auto_subframe' ) {
     console.log(`${callback.url} ${callback.frameId} ${callback.tabId} ${callback.parentFrameId} ${callback.transitionType}`);
+
+    if (callback.url.startsWith(chrome.runtime.getURL("blocked.html"))) {
+      return; // ignore blocked page
+    }
   
     var phishing;
     //send call to model to see if phishing
-    await fetch("https://www.phishtales.net/extension", {
+    var response = await fetch("http://127.0.0.1:5000/extension", {//https://www.phishtales.net
       method: "POST",
       body: JSON.stringify({
-        form: {
-          url: callback.url,
-          returnString: true
-        }
+          url: callback.url
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
-    })
-  .then((response) => response.json())
-  .then((json) => phishing = json);
+    });
+
+    phishing = await response.text();
+
+  
 
 
     console.log(phishing);
@@ -50,13 +54,15 @@ chrome.webNavigation.onCommitted.addListener(async (callback) => {
     var isWhitelisted = ignoreListContains(callback.url);
     console.log(`whitelsited : ${isWhitelisted}`);
 
-    if (phishing == 'phishing' && !isWhitelisted) {
+    if (phishing == 'phishing' && !isWhitelisted && whitelistTabs[callback.tabId] == undefined) {
         chrome.action.setIcon({path: "/warning.png"});
         chrome.tabs.update(callback.tabId, {url: (chrome.runtime.getURL("blocked.html") + "?url=" + callback.url)});
         
-    } else if (!isWhitelisted) {
+    } else {
         chrome.action.setIcon({path: "/PhishTales.png"});
     }
+
+    whitelistTabs[callback.tabId] = undefined;
 
   }
 });
@@ -71,6 +77,7 @@ chrome.runtime.onMessage.addListener(
         "from a content script:" + sender.tab.url :
         "from the extension");
       whitelistMap.set(request.url, 0)
+      whitelistTabs[request.tabId] = true
     } else if (request.action == 'updateIgnore') {
       updateIgnoreList(request.url, request.add);
     } else if (request.action == 'getIgnore') {
