@@ -23,6 +23,7 @@ This project is designed to be a program and/or integrated web extension that in
 ## Installation Instructions
 
 ### ML Model
+The machine learning model is written and implemented within the phish_tales_run.py program. The model was generated with 2000 phishing links and 2000 legitimate links. A DecisionTreeClassifier was used to the train the data after feature extraction was performed. The model is saved as model.pkl, and able to be used in other programs.
 
 ### Front End, locally hosted
 For this, you just need to run the following to get all libraries needed:
