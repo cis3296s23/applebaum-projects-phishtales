@@ -100,6 +100,21 @@ button {
 		transition: background-color 0.3s ease-in-out;
 		width: 90%;
 	}
+	.fabutton {
+		text-align: center;
+		display: inline-block;
+		background-color: #d8161600;
+		border: none;
+		border-radius: 5px;
+		color: #000000;
+		cursor: pointer;
+		font-size: 14px;
+		font-weight: bold;
+		margin-top: 15px;
+		padding: 10px 20px;
+		transition: background-color 0.3s ease-in-out;
+		width: 20%;
+	}
 
 	.center {
 		margin: auto;
@@ -108,3 +123,9 @@ button {
 		display: flex;
   		justify-content: space-evenly;
 	  }
+
+	.leftfatext {
+		text-align: left;
+		display: inline-block;
+		width: 70%;
+	}

@@ -11,7 +11,7 @@ it('valid domain returned from URL', () => {
 
   it('updates ignore list', () => {
     //expect.assertions(1);
-    updateIgnoreList("https://github.com/cis3296s23/applebaum-projects-phishtales", true);
+    updateIgnoreList(getDomain("https://github.com/cis3296s23/applebaum-projects-phishtales"), true);
 
 
     return expect(getIgnore(getDomain("https://github.com/cis3296s23/applebaum-projects-phishtales"))).toBe(0);
@@ -20,9 +20,10 @@ it('valid domain returned from URL', () => {
 
   it('removes from ignore list', () => {
     //expect.assertions(1);
-    updateIgnoreList("https://github.com/cis3296s23/applebaum-projects-phishtales", true);
-    expect(getIgnore(getDomain("https://github.com/cis3296s23/applebaum-projects-phishtales"))).toBe(0);
-    updateIgnoreList("https://github.com/cis3296s23/applebaum-projects-phishtales", false);
+    var domain = getDomain("https://github.com/cis3296s23/applebaum-projects-phishtales");
+    updateIgnoreList(domain, true);
+    expect(getIgnore(domain)).toBe(0);
+    updateIgnoreList(domain, false);
 
-    return expect(getIgnore(getDomain("https://github.com/cis3296s23/applebaum-projects-phishtales"))).toBe(1);
+    return expect(getIgnore(domain)).toBe(1);
   });

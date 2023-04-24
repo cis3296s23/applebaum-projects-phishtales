@@ -42,7 +42,7 @@
     {% if result %}  <!-- check the validity of the result-->
         <p>The URL is <strong>{{ result }}</strong>.</p> <!-- display safe or phising -->
         {% if result == "safe" %} <!-- if the result is safe the code below will ask user to click on the url to visit the page -->
-            <p>Click to open the URL: <a href="{{ request.form['url'] }}" target="_blank">{{ request.form['url'] }}</a></p>
+            <p>Click to open the URL: <a href="//{{ request.form['url'] }}" target="_blank">{{ request.form['url'] }}</a></p>
         {% endif %}
     {% endif %}
 </body>
