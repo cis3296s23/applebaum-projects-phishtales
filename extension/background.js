@@ -1,8 +1,7 @@
 var whitelistMap = new Map();
 var whitelistTabs = {};
 
-// const { getDomain, updateIgnoreList, loadWhitelist, getIgnore } = require('./domainUtil')
-import {getDomain, updateIgnoreList, loadWhitelist, getIgnore} from './domainUtil.js'
+import {getDomain, loadWhitelist, getIgnore} from './domainUtil.js'
 
 
 
@@ -12,7 +11,7 @@ import {getDomain, updateIgnoreList, loadWhitelist, getIgnore} from './domainUti
 
 function ignoreListContains(websiteURL) {
   let domain = getDomain(websiteURL);
-  return getIgnore(domain) == 0 || (whitelistMap.get(websiteURL) ?? 1) == 0;
+  return getIgnore(domain) == 1 || (whitelistMap.get(websiteURL) ?? 0) == 1;
   
 }
 
@@ -76,12 +75,8 @@ chrome.runtime.onMessage.addListener(
       console.log(sender.tab ?
         "from a content script:" + sender.tab.url :
         "from the extension");
-      whitelistMap.set(request.url, 0)
+      whitelistMap.set(request.url, 1)
       whitelistTabs[request.tabId] = true
-    } else if (request.action == 'updateIgnore') {
-      updateIgnoreList(request.url, request.add);
-    } else if (request.action == 'getIgnore') {
-     // return domainWhitelist;
     }
   }
 );
