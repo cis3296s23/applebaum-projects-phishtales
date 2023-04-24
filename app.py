@@ -140,5 +140,15 @@ def index():
             result = 'invalid'
     return render_template('index.html', result=result)  # return the result in html file
 
+@app.route('/aboutProject')
+def about_project():
+    return render_template('aboutProject.html')
+
+@app.route('/index')
+def home():
+    return render_template('index.html')
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
