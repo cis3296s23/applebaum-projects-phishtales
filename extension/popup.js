@@ -8,6 +8,7 @@ var ignoreListContainer = document.getElementById('ignoreList');
 var ignoreListItem = document.getElementById('ignoreListItem');
 var btnAddToIgnoreList = document.getElementById('btnAddWhitelist');
 var btnExitIgnoreList = document.getElementById('btnExitIgnoreList');
+var btnWebsite = document.getElementById('btnWebsite');
 
 var currentURL;
 var defaultHeight = document.body.offsetHeight;
@@ -48,6 +49,10 @@ function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
+}
+
+function goToWebsite() {
+    parent.open('https://www.phishtales.net/');
 }
 
 
@@ -122,3 +127,5 @@ ignoreButton.addEventListener("click", showIgnoreList);
 btnAddToIgnoreList.addEventListener("click", addCurrentWebsite);
 
 btnExitIgnoreList.addEventListener("click", exitIgnoreList);
+
+btnWebsite.addEventListener("click", goToWebsite)
