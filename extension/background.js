@@ -1,32 +1,38 @@
-var whitelistMap = new Map();
-var whitelistTabs = {};
+let whitelistMap = new Map();
+let whitelistTabs = {};
 
-import {getDomain, loadWhitelist, getIgnore} from './domainUtil.js'
-
-
+import {getDomain, getIgnore, updateIgnoreList} from './domainUtil.js'
 
 
 
 
 
-function ignoreListContains(websiteURL) {
+
+
+async function ignoreListContains(websiteURL) {
   let domain = getDomain(websiteURL);
-  return getIgnore(domain) == 1 || (whitelistMap.get(websiteURL) ?? 0) == 1;
+  return new Promise((resolve, reject) => {
+    getIgnore(domain).then(
+      result => {
+        resolve(result == 1 || (whitelistMap.get(websiteURL) ?? 0) == 1);
+      }
+    );
+    
+    }); 
   
 }
 
-chrome.runtime.onStartup.addListener(
+/*chrome.runtime.onStartup.addListener(
   function() {
     loadWhitelist();
   }
-);
+);*/
 
 
 
 chrome.webNavigation.onCommitted.addListener(async (callback) => {
   if (callback.transitionType && callback.transitionType != 'auto_toplevel' && callback.transitionType != 'auto_subframe' ) {
-    console.log(`${callback.url} ${callback.frameId} ${callback.tabId} ${callback.parentFrameId} ${callback.transitionType}`);
-
+    
     if (callback.url.startsWith(chrome.runtime.getURL("blocked.html"))) {
       return; // ignore blocked page
     }
@@ -50,18 +56,25 @@ chrome.webNavigation.onCommitted.addListener(async (callback) => {
 
     console.log(phishing);
     //var phishing = callback.url == "https://www.google.com/";
-    var isWhitelisted = ignoreListContains(callback.url);
-    console.log(`whitelsited : ${isWhitelisted}`);
-
-    if (phishing == 'phishing' && !isWhitelisted && whitelistTabs[callback.tabId] == undefined) {
-        chrome.action.setIcon({path: "/warning.png"});
-        chrome.tabs.update(callback.tabId, {url: (chrome.runtime.getURL("blocked.html") + "?url=" + callback.url)});
-        
-    } else {
-        chrome.action.setIcon({path: "/PhishTales.png"});
-    }
-
-    whitelistTabs[callback.tabId] = undefined;
+    ignoreListContains(callback.url).then(
+      isWhitelisted => {
+        if (isWhitelisted == 0) {
+          updateIgnoreList(getDomain(callback.url), 1)
+        }
+        console.log(`whitelisted : ${isWhitelisted}`);
+    
+        if (phishing == 'phishing' && !isWhitelisted && whitelistTabs[callback.tabId] == undefined) {
+            chrome.action.setIcon({path: "/warning.png"});
+            chrome.tabs.update(callback.tabId, {url: (chrome.runtime.getURL("blocked.html") + "?url=" + callback.url)});
+            
+        } else {
+            chrome.action.setIcon({path: "/PhishTales.png"});
+        }
+    
+        whitelistTabs[callback.tabId] = undefined;
+      }
+    );
+    
 
   }
 });
@@ -72,9 +85,6 @@ chrome.runtime.onMessage.addListener(
 
   
     if (sender.tab && sender.tab.url.startsWith(chrome.runtime.getURL("blocked.html")) && request.action == "whitelist") {
-      console.log(sender.tab ?
-        "from a content script:" + sender.tab.url :
-        "from the extension");
       whitelistMap.set(request.url, 1)
       whitelistTabs[request.tabId] = true
     }

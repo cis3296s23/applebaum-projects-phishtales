@@ -1,6 +1,6 @@
 import {chrome} from 'jest-chrome';
 
-import {getDomain, updateIgnoreList, loadWhitelist, getIgnore} from './domainUtil.js'
+import {getDomain, updateIgnoreList, getIgnore} from './domainUtil.js'
 
 
 it('valid domain returned from URL', () => {
