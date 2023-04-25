@@ -61,6 +61,7 @@ p {
 .image-text {
             display: flex;
             margin-bottom: 20px;
+          
         }
         .image-text img {
             width: 60%;
@@ -73,6 +74,12 @@ p {
 
 .persona{
   background-color: #2a9f81;
+}
+
+
+.testing{
+  size: 50%;
+
 }
 
 
