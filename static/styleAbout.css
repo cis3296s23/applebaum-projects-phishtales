@@ -1,0 +1,119 @@
+
+header {
+  color: white;
+  text-align: center;
+  padding: 1rem;
+   background: linear-gradient(243deg, #2a9f81, #5976d4, #5b1e78, #e520a4, #e54805);
+    background-size: 1000% 1000%;
+
+    -webkit-animation: AnimationName 27s ease infinite;
+    -moz-animation: AnimationName 27s ease infinite;
+    animation: AnimationName 27s ease infinite;
+}
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+
+
+body{
+   max-width: 1200px;
+  margin-left: 10%;
+   margin-right: 10%;
+   background-color: rgb(219, 229, 239);
+}
+
+.body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+background: linear-gradient(160deg, #aaffc3 0%, #eaffd0 100%);
+ }
+
+.abstract-image {
+  width: 70%;
+  height: auto;
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+.image-text {
+            display: flex;
+            margin-bottom: 20px;
+          
+        }
+        .image-text img {
+            width: 60%;
+        }
+        .image-text p {
+            width: 40%;
+            padding-left: 10px;
+        }
+
+
+.persona{
+  background-color: #2a9f81;
+}
+
+
+.testing{
+  size: 50%;
+
+}
+
+
+/*FOOTE*/
+footer {
+  background-color: seagreen;
+  color: #fff;
+  padding: 0px 0;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+

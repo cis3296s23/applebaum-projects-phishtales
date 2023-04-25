@@ -1,10 +1,11 @@
 # Generated files
 .docusaurus
 
-# Misc
+# Miscgit init
 .DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 extension/node_modules
+git checkout -bgit commit -m 
