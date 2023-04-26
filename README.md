@@ -75,7 +75,16 @@ Resources required for this project can be obtained with a simple internet conne
             <br />
             <sub><b>Ali Shahid</b></sub>
         </a>
-    </td></tr>
+    </td>
+    <td align="center">
+        <a href="https://github.com/trau3">
+            <img src="https://avatars.githubusercontent.com/u/70736675?v=4" width="100;" alt="thomas"/>
+            <br />
+            <sub><b>Thomas Rau</b></sub>
+        </a>
+    </td>
+    
+    </tr>
 </table>
 
 [//]: # ( readme: collaborators -end )
