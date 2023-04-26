@@ -17,7 +17,6 @@ var defaultHeight = document.body.offsetHeight;
 
 
 
-//var result = await loadWhitelist();
 checkCurrentURL();
 
 

@@ -37,9 +37,8 @@ chrome.webNavigation.onCommitted.addListener(async (callback) => {
       return; // ignore blocked page
     }
   
-    var phishing;
     //send call to model to see if phishing
-    var response = await fetch("http://127.0.0.1:5000/extension", {//https://www.phishtales.net
+    var response = await fetch("https://www.phishtales.net/extension", {
       method: "POST",
       body: JSON.stringify({
           url: callback.url
@@ -49,19 +48,13 @@ chrome.webNavigation.onCommitted.addListener(async (callback) => {
       }
     });
 
-    phishing = await response.text();
+    let phishing = await response.text();
 
-  
+    console.log("phishing:" + phishing);
 
 
-    console.log(phishing);
-    //var phishing = callback.url == "https://www.google.com/";
     ignoreListContains(callback.url).then(
       isWhitelisted => {
-        if (isWhitelisted == 0) {
-          updateIgnoreList(getDomain(callback.url), 1)
-        }
-        console.log(`whitelisted : ${isWhitelisted}`);
     
         if (phishing == 'phishing' && !isWhitelisted && whitelistTabs[callback.tabId] == undefined) {
             chrome.action.setIcon({path: "/warning.png"});
@@ -83,8 +76,9 @@ chrome.webNavigation.onCommitted.addListener(async (callback) => {
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
 
-  
+
     if (sender.tab && sender.tab.url.startsWith(chrome.runtime.getURL("blocked.html")) && request.action == "whitelist") {
+      //allow loading of pages that users continue to
       whitelistMap.set(request.url, 1)
       whitelistTabs[request.tabId] = true
     }
