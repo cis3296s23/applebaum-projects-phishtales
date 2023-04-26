@@ -3,7 +3,7 @@
 # PhishTales
 [![Report Issue on Jira](https://img.shields.io/badge/Report%20Issues-Jira-0052CC?style=flat&logo=jira-software)]([https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/DT/issues](https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/PHT/issues))
 [![Deploy Docs](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml)
-[![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://applebaumian.github.io/tu-cis-4398-docs-template/)
+[![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://www.phishtales.net/aboutProject)
 
 
 </div>
@@ -41,10 +41,6 @@ The output should provide you with the IP to navigate to for the website.
 
 The extension can be accessed inside the extension folder. To load the unpacked extension, you can navigate to Settings>Extensions>Load unpacked and then select the extension folder.
 
-## High Level Requirement
-
-Describe the requirements – i.e., what the product does and how it does it from a user point of view – at a high level.
-
 ## Conceptual Design
 
 This project will mainly use python, as it has many packages and libraries used for data science and machine learning. Models such as K—nearest neighbor, decision trees, naïve bayes, and support vector machines will be used for classification. XGBoost, polyfit, and linregress will be used for regression, with regplot from seaborn will be used to visualize data. These models can be obtained from NumPy, SciPy, pandas, matplotlib, and scikit-learn packages freely available using pip. Python3 will be used for the actual data preprocessing, model training, model testing, an model evaluation. To implement a web extension, HTML, JavaScript, and CSS will be used. This will create a simple interface that detects the current web URL, passes it through the ML model, and outputs a classification and regression value indicating the reliability of the website in question. HTML and CSS will be used to build and style the extension, while JavaScript will simply deal with user-interaction.
@@ -63,18 +59,33 @@ Resources required for this project can be obtained with a simple internet conne
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/ApplebaumIan">
-            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
+        <a href="https://github.com/anthonyjromann">
+            <img src="https://avatars.githubusercontent.com/u/76930172?v=4" width="100;" alt="Ant"/>
             <br />
-            <sub><b>Ian Tyler Applebaum</b></sub>
+            <sub><b>Anthony Roman</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/leighflagg">
-            <img src="https://avatars.githubusercontent.com/u/77810293?v=4" width="100;" alt="leighflagg"/>
+        <a href="https://github.com/alishahidd">
+            <img src="https://avatars.githubusercontent.com/u/76089708?v=4" width="100;" alt="ali"/>
             <br />
-            <sub><b>Null</b></sub>
+            <sub><b>Ali Shahid</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/trau3">
+            <img src="https://avatars.githubusercontent.com/u/70736675?v=4" width="100;" alt="thomas"/>
+            <br />
+            <sub><b>Thomas Rau</b></sub>
+        </a>
+        </td>
+    <td align="center">
+        <a href="https://github.com/douedra1">
+            <img src="https://avatars.githubusercontent.com/u/50376645?v=4" width="100;" alt="DJ"/>
+            <br />
+            <sub><b>Djakaridja Ouedraogo</b></sub>
+        </a>
+    </td>
     </td></tr>
 </table>
 
