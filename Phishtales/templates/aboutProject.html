@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - PhishTales</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styleAbout.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-ujbKXb9V3HdK7jcWL6kHL1c+2Lj4MR4Gkjl7UtwpSHg/2IS/+XtfGfeJ1ufO+m+y" crossorigin="anonymous">
+
+</head>
+<body>
+  <header>
+    <h1>PhishTales</h1>
+  </header><br><br>
+
+  <a href="{{ url_for('index') }}">
+  <button class="home-button">
+    <span class="material-icons">home</span>
+  </button>
+</a>
+
+
+<a href="https://github.com/cis3296s23/applebaum-projects-phishtales" target="_blank">
+  <button style="font-size: 24px; line-height: 1; font-family: 'Material Icons';" class="github-button">
+    <i class="fa fa-github"></i>
+  </button>
+</a>
+
+
+
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="abstract-container">
+        <h2 style=" color: #CEF0D4; font-family: 'Rouge Script', cursive; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0 0 50px; text-align: center; text-shadow: 1px 1px 2px #082b34;  border-bottom: double #555;">Project Abstract</h2>
+        <p>This project is designed to be a program and/or integrated web extension that inputs a URL and
+outputs a probability that the inputted URL is a phishing scam. From a user point of view, all that
+occurs is a simple URL input, or in the case of a browser extension, a click of a button. The output is
+the reliability score of the website in question. The project uses machine learning to predict if a
+website is a phishing scam or not.</p>
+
+<img src="{{ url_for('static', filename='abstract.jpg') }}" alt="Image" class="abstract-image">
+
+      </div>
+       <div class="image-container">
+        
+      </div>
+    </div>
+  </div>
+
+
+   <!-- Conceptional Design -->
+   <div class="Conceptual-design">
+      <h2 style="color: #b48608; font-family: 'Droid serif', serif; font-size: 36px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px;">Conceptual Design</h2>
+    <p>This project will mainly use Python, as it has many packages and libraries used for data science and
+machine learning. Models such as K—nearest neighbor, decision trees, naïve bayes, and support
+vector machines will be used for classification. XGBoost, polyfit, and linregress will be used for
+regression, with regplot from seaborn will be used to visualize data. These models can be obtained
+from NumPy, SciPy, pandas, matplotlib, and scikit-learn packages freely available using pip.
+Python3 will be used for the actual data preprocessing, model training, model testing, and model
+evaluation. To implement a web extension, HTML, JavaScript, and CSS will be used. This will create
+a simple interface that detects the current web URL, passes it through the ML model, and outputs a
+classification and regression value indicating the reliability of the website in question. HTML and
+CSS will be used to build and style the extension, while JavaScript will simply deal with user
+interaction.</p>
+</div>
+<!-- End Conceptional Design -->
+
+
+
+ <!-- Proof of Concept -->
+   <div class="Proof-of-Concept">
+      <h2 style="color: #b48608; font-family: 'Droid serif', serif; font-size: 36px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px;">Proof of Concept</h2>
+       <a href="https://github.com/shreyagopal/Phishing-Website-Detection-by-Machine-Learning-Techniques/">Link to the proof of concept</a>
+   
+       <p>This project on GitHub employs similar techniques to build a ML model to determine if a website is
+likely a phishing scam. Similar to what I would like to employ, it uses known phishing URLs and
+known legitimate URLs to train a ML model (in this case, it employs multiple models and compares
+their accuracy) and ultimately predict (classify) a URL's reliability. The features extracted from the 
+URLs are similar to what I would like to employ, such as features of the actual URL, features of the
+domain, and HTML/javascript features. I would like to create my own project rather than further
+developing this one, because it is trained off of data that is 2+ years old, it also may have out-of-date
+learning models which could be optimized with state of the art techniques, and it lacks the ability to
+perform tasks live while in a browser. This project also uses classification, a subset of supervised
+learning, while I would like to employ regression techniques.</p>
+</div>
+<!-- End Proof of Concept-->
+
+
+
+ <!-- Background -->
+   <div class="background">
+      <h2 style="color: #b48608; font-family: 'Droid serif', serif; font-size: 36px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px;">Background</h2>
+    <p>This tool will check URLs for domain squatting-- which is when a common website is registered
+under a different domain (ex: registering apple.io vs apple.com), URL hijacking-- which takes
+common website domain typos and registers them to make a website appear to be legitimate (ex:
+goggle.com vs google.com), also checking other details in the URL such as its length, the number of
+subdomains in the URL, and the Top-Level Domain (TLD). The project will also check the domain
+name and its IP address to see if it is blacklisted in any commonly known phishing databases (ex:
+https:openphish.com/phishing_database.html). Page-based features will be checked to determine
+how reliable the website seems, websites (ex: PageRank and AWS) can be used for reference data.
+Finally, content-based features can parse through the code used to develop the website and detect
+the reliability of said website. All these features combined will use a decision-tree ML algorithm to
+create a score that assesses the likelihood that a given URL is a phishing scam or not. While other
+projects exist that use similar ideologies, this project will employ updated models and will use newly
+updated data to train these models. With all of the different features used to create a predicted
+output, this project has potential to be more accurate than similar projects.<br><br></p>
+</div>
+<!-- End Background-->
+
+    <h1 style=" color: #CEF0D4; font-family: 'Rouge Script', cursive; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0 0 50px; text-align: center; text-shadow: 1px 1px 2px #082b34;  border-bottom: double #555;"> Project Design</h1>
+
+ <!-- Vision -->
+   <div class="vision">
+      <h2 style="color: #b48608; font-family: 'Droid serif', serif; font-size: 36px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px;">vision</h2>
+    <p>For people browsing the internet who want to be safe when clicking a link, PhishTales is a
+website or browser extension that helps determine if a website is phishing.
+Unlike Phishing Website Detection by Machine Learning Techniques, our product uses newer
+website data and machine learning techniques.</p>
+</div>
+<!-- End Vision-->
+
+
+<h2 style="color: #b48608; font-family: 'Droid serif', serif; font-size: 36px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px;">Personas</h2>
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            width: 50%;
+            padding: 10px;
+            vertical-align: top;
+            border: 1px solid #000;
+        }
+    </style>
+
+    <table class="persona">
+        <tr>
+            <td>
+                <!-- Personas 1 -->
+                <div class="personas1">
+                    <h3>Persona 1: 15-30 User Age Group</h3>
+                    <p>Emily is a tech-savvy individual who spends most of her time online. She enjoys browsing social
+                    media, streaming content, and playing online games. She is knowledgeable about the latest
+                    tech trends and is always up-to-date with the latest gadgets. She wants to protect herself from
+                    online threats such as phishing attacks. She is aware of the potential dangers of phishing scams
+                    and doesn't want to fall prey to them. She wants to find a reliable phishing detection product that
+                    can help her stay safe online.<br>
+                    Emily is a busy college student and doesn't have a lot of spare time to research and evaluate
+                    different phishing detection products. She is also concerned about the cost of such products
+                    and wants to find an affordable solution. She finds Phishtales.</p>
+                </div>
+                <!-- End Persona 1-->
+            </td>
+            <td>
+                <!-- Personas 2 -->
+                <div class="personas2">
+                    <h3>Persona 2: 30-50 User Age Group</h3>
+                    <p>Sarah is a 40 year old, busy stay-at-home mom with two young children. She spends a lot of
+                    time managing her household, running errands, and taking care of her kids. She loves social
+                    media and buying things online. <br>
+                    She uses her phone, laptop, and tablet for basic web browsing and computing tasks. She does
+                    not know much about cyber security practices. Sarah is concerned about the safety of her
+                    personal information online and wants to find a reliable phishing detection product that can help
+                    protect her and her family from cyber attacks. She wants to ensure that her kids are safe when
+                    using the internet.</p>
+                </div>
+                <!-- End Persona 2-->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!-- Personas 3 -->
+                <div class="personas3">
+                    <h3>Persona 3: 50-65 User Age Group</h3>
+                    <p>John, a 55-year-old Cyber Security Analyst based in New York City, relies on PhishTales to
+                    enhance his ability to detect and mitigate potential security threats. With a background in
+                    Computer Science and a focus on Cyber Security, John is passionate about protecting his
+                    organization from cyberattacks, such as phishing and malware. PhishTales, an innovative
+                    phishing URL detection extension, seamlessly integrates into John's browser and automatically
+                    scans links in emails, web pages, and other digital sources. By flagging potentially unsafe
+                    URLs, PhishTales empowers John to promptly investigate and neutralize threats, ensuring a
+                    secure digital environment for his organization.</p>
+                </div>
+                <!-- End Persona 3-->
+            </td>
+            <td>
+                <!-- Personas 4 -->
+                <div class="personas4">
+                <h3>Persona 4: 65-90 User Age Group</h3>
+                <p>Eleanor is an elderly 80-year-old woman who lives alone and spends most of her time at home.
+                She enjoys reading books and watching television. She has limited experience using the
+                internet and with 21st-century technology. <br><br>
+                Eleanor wants to stay connected with her family and friends through email and social media.
+                She also wants to be able to manage her bank account securely. She wants to find a reliable
+                phishing detection product that can help her protect herself from online scams and fraud. She
+                does not know what phishing is, and is the most vulnerable to phishing attacks.
+                </p>
+            </div>
+            <!-- End Persona 4-->
+        </td>
+    </tr>
+</table><br><br>
+
+
+
+
+
+ <h2 style="color: #b48608; font-family: 'Droid serif', serif; font-size: 36px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px;"> Class Diagram</h2>
+<div class="image-text">
+   
+        <img src="{{ url_for('static', filename='classdiagram.png') }}" alt="Image"/>
+        <p>
+            This is the UML Class diagram for PhishTales. The beginning of the diagram shows
+how the machine learning model is built from the dataset. The data is split into a training and
+testing set, then pre-processed, followed by feature extraction and training/evaluation. This
+requires the use of a number of python packages. After the model is complete, it is exported
+using pickle to become a .pkl file. This pickle file is implemented into a python driver program
+which predicts new outcomes based on a URL input. The driver program also takes input from a
+user and checks its validity, extracts the features from the URL, and outputs the prediction from
+the mode. From here, this program is implemented into a flask web application which allows a
+user to use the model on the web to receive a result.
+        </p>
+    </div><br><br>
+
+    <h2 style="color: #b48608; font-family: 'Droid serif', serif; font-size: 36px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px;"> Sequence Diagram</h2>
+
+ <div class="image-text">
+        <img src="{{ url_for('static', filename='sequencediagram.png') }}" alt="Image"/>
+        <p>
+           In this sequence diagram, the user navigates to a potential phishing website, which
+the extension listens to from a browser event. When the navigation request is received by the
+extension, the extension sends a GET request to the ML Model Server. The ML Model server
+then runs the Python script for the ML model with the URL as an argument. The ML Model
+returns that the URL is potentially phishing, which the server then returns back to the extension.
+The extension changes the tab to the blocke.html webpage, which is a webpage inside the
+extension. The browser displays this to the user, giving them a message that the website is
+potentially phishing and that they must click Go back to go to their previous website or continue
+to the potential phishing website. The user clicks continue, and the blocked webpage sends a
+request to the extension to ignore all navigation requests for the specified URL. The blocked
+page then sends a request to the browser to navigate to the potential phishing URL. The
+browser displays the website to the user.
+        </p>
+    </div>
+
+<br><br><br>
+ <div class="image-text">
+        <img src="{{ url_for('static', filename='sequencediagram2.png') }}" alt="Image"/>
+       
+        <p>
+        In this sequence diagram, the user enters a URL in the website and then the website
+sends a GET request to the server with the URL. The Server then runs the Python script for the
+ML model with the URL and gets the result that the URL is most likely phishing. The Server
+returns that to the website, then the website returns a textbox to the user that the URL is most
+likely phishing.
+        </p>
+    </div>
+  <br><br>
+   
+
+ <h2 style=" color: #CEF0D4; font-family: 'Rouge Script', cursive; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0 0 50px; text-align: center; text-shadow: 1px 1px 2px #082b34;  border-bottom: double #555;">Testing</h2>
+<div class="testing">
+    <img src="{{ url_for('static', filename='testing01.png') }}" alt="Image" style="max-width: 100%; height: auto;"/>
+</div>
+
+
+
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2023 PhishTales. All rights reserved.</p>
+    <div class="developers" style="display: flex; justify-content: center;">
+      <div class="developer" style="text-align: center;">
+        <p>Ali Shahid</p>
+        <a href="" target="_blank">LinkedIn</a> | 
+        <a href="" target="_blank">GitHub</a>
+      </div>
+      <span style="margin-top: 2%; margin-left: 1%; margin-right: 2%;">|</span>
+      <div class="developer" style="text-align: center;">
+        <p>Anthony J. Roman</p>
+        <a href="" target="_blank">LinkedIn</a> | 
+        <a href="" target="_blank">GitHub</a>
+      </div>
+      <span style="margin-top: 2%; margin-left: 1%; margin-right: 2%;">|</span>
+      <div class="developer" style="text-align: center;">
+        <p>Djakaridja Ouedraogo</p>
+        <a href="" target="_blank">LinkedIn</a> | 
+        <a href="" target="_blank">GitHub</a>
+      </div>
+      <span style="margin-top: 2%; margin-left: 1%; margin-right: 2%;">|</span>
+      <div class="developer" style="text-align: center;">
+        <p>Thomas Rau</p>
+        <a href="" target="_blank">LinkedIn</a> 
+        <a href="" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
