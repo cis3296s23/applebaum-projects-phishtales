@@ -100,10 +100,6 @@ button {
 		transition: background-color 0.3s ease-in-out;
 		width: 90%;
 	}
-	.button2:hover {
-		background-color: #474747;
-	}
-
 	.fabutton {
 		text-align: center;
 		display: inline-block;
@@ -118,10 +114,6 @@ button {
 		padding: 10px 20px;
 		transition: background-color 0.3s ease-in-out;
 		width: 20%;
-	}
-	
-	.fabutton:hover {
-		color: #474747;
 	}
 
 	.center {
