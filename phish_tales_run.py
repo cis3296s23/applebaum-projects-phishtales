@@ -1,44 +1,39 @@
 import pickle
-from sklearn.tree import DecisionTreeClassifier
 import numpy as np
 import tldextract
-import ipaddress
 import re
-from urllib.parse import urlparse
 import sys
-import urllib
-
 
 #Load pre-trained model from pickle
 def load_model():
-    with open('model.pkl', 'rb') as f:
-        tree = pickle.load(f)
+    with open('model.pkl', 'rb') as file:
+        tree = pickle.load(file)
     return tree
 
 # Feature 1: Presence of IP Address in URL
 def usesIP(url):
-    try:
-        ip = ipaddress.ip_address(url)
-        return 1
-    except:
-        return 0
-
-
-#Feature 2: Presence of '@' Symbol in URL
-def hasAt(url):
-    if '@' in url:
+    match = re.search(
+        '(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.'
+        '([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\/)|'  
+        '(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.'
+        '([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\/)|'  
+        '((0x[0-9a-fA-F]{1,2})\\.(0x[0-9a-fA-F]{1,2})\\.(0x[0-9a-fA-F]{1,2})\\.(0x[0-9a-fA-F]{1,2})\\/)'
+        '(?:[a-fA-F0-9]{1,4}:){7}[a-fA-F0-9]{1,4}|'
+        '([0-9]+(?:\.[0-9]+){3}:[0-9]+)|'
+        '((?:(?:\d|[01]?\d\d|2[0-4]\d|25[0-5])\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d|\d)(?:\/\d{1,2})?)', url)
+    if match:
         return 1
     else:
         return 0
 
 
-#Feature 3: URL Length
+#Feature 2: Records URL length as an integer
 def url_length(url):
     length = len(url)
     return length
 
 
-#Feature 4: Redirection
+#Feature 3: Checks for the presence of redirection in a URL with the sequence '//' after https or http
 def redirect(url):
     if url[8:].find('//') >= 0:
         return 1
@@ -46,7 +41,7 @@ def redirect(url):
         return 0
 
 
-#Feature 5: URL Shortening
+#Feature 4: Checks for the uses of common shortening services which may be used to hide a URLs full contents
 def isShort(url):
     shortening_services = r"bit\.ly|goo\.gl|shorte\.st|go2l\.ink|x\.co|ow\.ly|t\.co|tinyurl|tr\.im|is\.gd|cli\.gs|" \
                       r"yfrog\.com|migre\.me|ff\.im|tiny\.cc|url4\.eu|twit\.ac|su\.pr|twurl\.nl|snipurl\.com|" \
@@ -63,7 +58,7 @@ def isShort(url):
         return 0
 
 
-#Feature 6: Presence of Sensitive Words
+#Feature 5: Presence of Sensitive Words which are commonly associated with phishing scams
 def check_sensitive_words(url):
     sensitive_words = r"Password|Account|Login|Verify|Security|Update|Payment|Card|Bank|Alert|Access|" \
                             r"Confirm|Information|Identity|Social Security|Verification|Fraud|Suspended|Limited|" \
@@ -76,31 +71,41 @@ def check_sensitive_words(url):
         return 0
 
 
-#Feature 7: Number of Subdomains
+#Feature 6: Returns the number of subdomains including the top-level-domain.
 def count_subdomains(url):
     subdomains = tldextract.extract(url).subdomain.split('.')
     return len(subdomains)
 
-
-#Feature 8: Presence of '-' in Domain
-def isHyphen(url):
-    if '-' in urlparse(url).netloc:
-        return 1            
+#Feature 7: Check for the presence of https in a URL.
+def https(url):
+    if url[:5] == "https":
+        return 1
     else:
-        return 0   
+        return 0
 
-#Extract features
+#Feature 8: Check for the presence of http in a URL.
+def http(url):
+    if url[:4] == "http" and url[:5] != 'https' :
+        return 1
+    else:
+        return 0
+
+#Extracts features from a URL. Also adds features to record the count of the characters '!', '@', '#', '%', '&', '+', '-', '=', '.', '/', '\', and '?'
 def feature_extraction(url):
     features = []
+    symbols = ['!', '@', '#', '%', '&', '+', '-', '=', '.', '/', '\\', '?']
     #URL-based features
-    features.append(usesIP(urlparse(url).hostname))
-    features.append(hasAt(url))
+    features.append(usesIP(url))
     features.append(url_length(url))
     features.append(redirect(url))
     features.append(isShort(url))
     features.append(check_sensitive_words(url))
     features.append(count_subdomains(url))
-    features.append(isHyphen(url))
+    #Features 9-21
+    for symbol in symbols:
+        features.append(url.count(symbol))
+    features.append(https(url))
+    features.append(http(url))
     
     return features
 
@@ -114,11 +119,9 @@ def takeInput():
         print('Invalid URL. Please try again.')
         sys.exit(1)
     else:
-        if not url.startswith("https://") and not url.startswith("http://"):
-            url = 'https://' + url
         return url
 
-#Main function used for the program
+#Main function used to generate a prediction.
 def main():
     tree = load_model()
     url = takeInput()
