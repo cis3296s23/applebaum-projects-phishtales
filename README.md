@@ -82,9 +82,15 @@ Resources required for this project can be obtained with a simple internet conne
             <br />
             <sub><b>Thomas Rau</b></sub>
         </a>
+        </td>
+    <td align="center">
+        <a href="https://github.com/douedra1">
+            <img src="https://avatars.githubusercontent.com/u/50376645?v=4" width="100;" alt="DJ"/>
+            <br />
+            <sub><b>Djakaridja Ouedraogo</b></sub>
+        </a>
     </td>
-    
-    </tr>
+    </td></tr>
 </table>
 
 [//]: # ( readme: collaborators -end )
