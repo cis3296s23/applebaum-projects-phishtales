@@ -9,6 +9,7 @@ infoLabel.innerHTML = `PhishTales has blocked ${getPhishingURL()}<br> This websi
 
 //get current tab id for whitelisting when clicking continue - website may redirect and prevent you from loading the next webpage
 chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+    //console.log(tabs[0]);
     currentTabId = tabs[0].id
 });
 
@@ -19,7 +20,7 @@ function goBack() {
 }
 
 function continueToURL() {
-    // send message to background process to temporarily ignore URL
+    
     chrome.runtime.sendMessage({action: "whitelist", url: getPhishingURL(), tabId: currentTabId});
     chrome.tabs.update({url: getPhishingURL()});
 }
