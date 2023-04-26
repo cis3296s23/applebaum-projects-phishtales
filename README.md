@@ -63,17 +63,17 @@ Resources required for this project can be obtained with a simple internet conne
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/ApplebaumIan">
-            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
+        <a href="https://github.com/anthonyjromann">
+            <img src="https://avatars.githubusercontent.com/u/76930172?v=4" width="100;" alt="Ant"/>
             <br />
-            <sub><b>Ian Tyler Applebaum</b></sub>
+            <sub><b>Anthony Roman</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/leighflagg">
-            <img src="https://avatars.githubusercontent.com/u/77810293?v=4" width="100;" alt="leighflagg"/>
+        <a href="https://github.com/alishahidd">
+            <img src="https://avatars.githubusercontent.com/u/76089708?v=4" width="100;" alt="ali"/>
             <br />
-            <sub><b>Null</b></sub>
+            <sub><b>Ali Shahid</b></sub>
         </a>
     </td></tr>
 </table>
